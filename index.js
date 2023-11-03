@@ -1,0 +1,21 @@
+const express = require("express");
+const app = express();
+
+require("dotenv").config();
+
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const jwt = require("jsonwebtoken");
+
+app.use(bodyParser.json());
+app.use(cors());
+
+const port = process.env.PORT || 8000;
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}!`);
+});
