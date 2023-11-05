@@ -10,7 +10,33 @@ const path = require("path");
 
 router.get("/all", async (req, res) => {
   try {
-    return res.status(200).json({ data: courseList });
+    const { page = 1, pageSize = 10, status, search } = req.query;
+
+    var courses = Array.from(courseList);
+
+    if (status !== "") {
+      courses = courseList.filter(
+        (course) => course.enrollmentStatus === status
+      );
+    }
+    if (search !== "") {
+      courses = courseList.filter(
+        (course) =>
+          course.name.toLowerCase().includes(search.toLowerCase()) ||
+          course.instructor.toLowerCase().includes(search.toLowerCase()) ||
+          course.description.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + parseInt(pageSize);
+    let paginatedCourses = courses.slice(startIndex, endIndex);
+
+    return res.json({
+      totalCourses: courses.length,
+      totalPages: Math.ceil(courses.length / pageSize),
+      currentPage: parseInt(page),
+      courses: paginatedCourses,
+    });
   } catch (error) {
     return res.status(400).json({ error });
   }

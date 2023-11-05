@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken");
 const { SECRET } = process.env;
 const { isLoggedIn } = require("./middleware");
 const userList = require("../db/users.json");
+const fs = require("fs");
+const path = require("path");
 
 // router.post("/signup", async (req, res) => {
 //   const { User } = req.context.models;
@@ -72,6 +74,59 @@ router.get("/me", isLoggedIn, async (req, res) => {
     return res.status(200).json({ data: user });
   } catch (error) {
     return res.status(400).json({ error });
+  }
+});
+
+router.post("/course-complete", isLoggedIn, async (req, res) => {
+  try {
+    const { courseId, userEmail } = req.body;
+    if (!courseId || !userEmail) {
+      return res.status(400).json({ error: "Please enter all fields" });
+    }
+    const user = userList.find((user) => user.email === userEmail);
+    // const course = courseList.find(
+    //   (course) => course.id === parseInt(courseId)
+    // );
+
+    const alreadyCompletedCheck = user.coursesEnrolled.find(
+      (course) => course.courseId === parseInt(courseId)
+    );
+
+    if (alreadyCompletedCheck.progress === 100) {
+      return res.status(400).json({ error: "Already completed" });
+    }
+
+    fs.readFile(
+      path.join(__dirname, "..", "/db/users.json"),
+      "utf8",
+      (error, data) => {
+        if (error) {
+          console.log(error);
+          return;
+        }
+        const users = JSON.parse(data);
+        const userIndex = users.findIndex((user) => user.email === userEmail);
+        const courseIndex = users[userIndex].coursesEnrolled.findIndex(
+          (course) => course.courseId === parseInt(courseId)
+        );
+        users[userIndex].coursesEnrolled[courseIndex].progress = 100;
+
+        fs.writeFile(
+          path.join(__dirname, "..", "/db/users.json"),
+          JSON.stringify(users),
+          (err) => {
+            if (err) {
+              console.log(err);
+              return;
+            }
+          }
+        );
+      }
+    );
+
+    return res.status(200).json({ data: "Course Completed Successfully" });
+  } catch (error) {
+    res.status(400).json({ error });
   }
 });
 

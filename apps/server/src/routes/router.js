@@ -4,7 +4,7 @@ const router = require("express").Router();
 
 // You can require and use your routes here ;)
 router.get("/test", (req, res) => {
-  res.send("Hello World");
+  res.send("Hi from the Server");
 });
 
 module.exports = router;

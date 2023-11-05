@@ -1,59 +1,50 @@
-import { Box, Divider, LinearProgress, Typography } from "@mui/material";
+import { Box, Divider, Typography } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-function LinearProgressWithLabel(props) {
-  return (
-    <Box sx={{ display: "flex", alignItems: "center" }}>
-      <Box sx={{ width: "100%", mr: 1 }}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
-      <Box sx={{ minWidth: 35 }}>
-        <Typography variant="body2" color="text.secondary">{`${Math.round(
-          props.value
-        )}%`}</Typography>
-      </Box>
-    </Box>
-  );
-}
+import { Link, useNavigate } from "react-router-dom";
+import { LinearProgressWithLabel } from "../components/LinearProgressWithLabel";
 
 const CourseCard = ({ course }) => {
   return (
-    <Box
-      m={3}
-      style={{
-        width: "270px",
-        height: "130px",
-        display: "flex",
-        flexDirection: "row",
-        // border: "1px solid #ccc",
-      }}
+    <Link
+      to={`/course/${course.courseId}`}
+      style={{ color: "inherit", textDecoration: "none" }}
     >
-      <Box style={{ height: "100px", width: "100px" }}>
-        <img
-          src={course.thumbnail}
-          alt={course.name}
-          style={{ width: "100%", height: "100%" }}
-        />
+      <Box
+        m={3}
+        style={{
+          width: "280px",
+          height: "130px",
+          display: "flex",
+          flexDirection: "row",
+          // border: "1px solid #ccc",
+        }}
+      >
+        <Box style={{ height: "100px", width: "100px" }}>
+          <img
+            src={course.thumbnail}
+            alt={course.name}
+            style={{ width: "100%", height: "100%" }}
+          />
+        </Box>
+        <Box p={3}>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+            {course.courseName}
+          </Typography>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+            {course.instructor}
+          </Typography>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+            Due: {course.dueDate}
+          </Typography>
+          <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
+            {course.name}
+          </Typography>
+          <br />
+          <LinearProgressWithLabel value={course.progress} />
+        </Box>
       </Box>
-      <Box p={3}>
-        <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
-          {course.courseName}
-        </Typography>
-        <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
-          {course.instructor}
-        </Typography>
-        <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
-          {course.dueDate}
-        </Typography>
-        <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
-          {course.name}
-        </Typography>
-        <br />
-        <LinearProgressWithLabel value={course.progress} />
-      </Box>
-    </Box>
+    </Link>
   );
 };
 
@@ -67,8 +58,7 @@ const StudentDashboard = () => {
       navigate("/login");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn]);
-  console.log(profile);
+  }, []);
   return (
     <Box p={5}>
       <Typography variant="body1" component="div" sx={{ flexGrow: 1 }}>
@@ -82,6 +72,18 @@ const StudentDashboard = () => {
             </Typography>
             <Divider />
             <br />
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              ID: {profile.id}
+              <br />
+              Email: {profile.email}
+              <br />
+              First Name: {profile.firstName}
+              <br />
+              Last Name: {profile.lastName}
+              <br />
+              Phone Number: {profile.phone}
+              <br />
+            </Typography>
           </Box>
           <br />
           <Divider />
@@ -97,8 +99,8 @@ const StudentDashboard = () => {
                   flexWrap: "wrap",
                 }}
               >
-                {profile.coursesEnrolled?.map((course) => (
-                  <CourseCard course={course} />
+                {profile.coursesEnrolled?.map((course, index) => (
+                  <CourseCard course={course} key={index} />
                 ))}
               </Box>
             </Typography>

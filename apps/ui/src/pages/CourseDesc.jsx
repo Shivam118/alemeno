@@ -10,9 +10,11 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { courseEnrollment, markAsCompleted } from "../redux/slices/userSlice";
+import { LinearProgressWithLabel } from "../components/LinearProgressWithLabel";
 
 const modalStyle = {
   position: "absolute",
@@ -30,17 +32,59 @@ const CourseDesc = () => {
   const [open, setOpen] = React.useState(false);
   const [course, setCourse] = React.useState(null);
   const { id } = useParams();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
   const token = useSelector((state) => state.token);
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  };
   const handleClose = () => setOpen(false);
+
   const handleEnrollClick = (e) => {
     e.preventDefault();
-    console.log("Enrolled");
     axios
       .post(
         `http://localhost:5000/courses/getEnrolled`,
+        {
+          courseId: id,
+          userEmail: profile.email,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        dispatch(
+          courseEnrollment({
+            courseId: course.id,
+            courseName: course.name,
+            instructor: course.instructor,
+            thumbnail: course.thumbnail,
+            dueDate: course.dueDate,
+            progress: 0,
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    handleClose();
+  };
+
+  const handleCompletedMark = (e) => {
+    e.preventDefault();
+    axios
+      .post(
+        "http://localhost:5000/users/course-complete",
         {
           courseId: id,
           userEmail: profile.email,
@@ -57,7 +101,7 @@ const CourseDesc = () => {
       .catch((err) => {
         console.log(err);
       });
-    handleClose();
+    dispatch(markAsCompleted(parseInt(id)));
   };
 
   React.useEffect(() => {
@@ -153,9 +197,9 @@ const CourseDesc = () => {
               />
             </Box>
             <Box>
-              {profile !== null &&
-              profile.coursesEnrolled.some(
-                (course) => course.courseId === id
+              {isLoggedIn &&
+              profile?.coursesEnrolled.some(
+                (course) => course.courseId === parseInt(id)
               ) ? (
                 <Button variant="contained" color="success">
                   ENROLLED
@@ -185,6 +229,37 @@ const CourseDesc = () => {
             </Box>
           </Box>
           <br />
+          {isLoggedIn &&
+            profile?.coursesEnrolled.some(
+              (course) => course.courseId === parseInt(id)
+            ) && (
+              <Box
+                p={5}
+                style={{
+                  width: "80%",
+                  background: "rgba(250,250,250,1)",
+                }}
+              >
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                  Course Progress
+                </Typography>
+                <LinearProgressWithLabel
+                  value={
+                    profile?.coursesEnrolled.find(
+                      (course) => course.courseId === parseInt(id)
+                    )?.progress
+                  }
+                />
+                <br />
+                <Button
+                  variant="contained"
+                  color="warning"
+                  onClick={handleCompletedMark}
+                >
+                  Mark Course as Completed
+                </Button>
+              </Box>
+            )}
           <br />
           <Box
             p={5}

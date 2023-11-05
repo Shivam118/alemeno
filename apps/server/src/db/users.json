@@ -13,15 +13,7 @@
         "instructor": "Monte Carlo",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png",
         "dueDate": "2024-02-20",
-        "progress": "50"
-      },
-      {
-        "courseId": 3,
-        "courseName": "Golang",
-        "instructor": "Sir Lang",
-        "thumbnail": "https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png",
-        "dueDate": "2024-02-10",
-        "progress": "20"
+        "progress": 50
       },
       {
         "courseId": 4,
@@ -29,7 +21,7 @@
         "instructor": "Sir Plus Plus",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png",
         "dueDate": "2024-03-30",
-        "progress": "30"
+        "progress": 30
       },
       {
         "courseId": 5,
@@ -37,7 +29,7 @@
         "instructor": "Sir Coffee JAVA",
         "thumbnail": "https://static.vecteezy.com/system/resources/previews/022/101/050/original/java-logo-transparent-free-png.png",
         "dueDate": "2024-01-10",
-        "progress": "10"
+        "progress": 10
       },
       {
         "courseId": 1,
@@ -63,7 +55,7 @@
         "instructor": "John Doe",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
         "dueDate": "2024-01-20",
-        "progress": "80"
+        "progress": 80
       },
       {
         "courseId": 2,
@@ -71,7 +63,7 @@
         "instructor": "Monte Carlo",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png",
         "dueDate": "2024-02-20",
-        "progress": "50"
+        "progress": 50
       },
       {
         "courseId": 4,
@@ -79,7 +71,7 @@
         "instructor": "Sir Plus Plus",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png",
         "dueDate": "2024-03-30",
-        "progress": "30"
+        "progress": 30
       }
     ]
   },
@@ -97,7 +89,7 @@
         "instructor": "John Doe",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
         "dueDate": "2024-01-20",
-        "progress": "80"
+        "progress": 80
       },
       {
         "courseId": 2,
@@ -105,7 +97,7 @@
         "instructor": "Monte Carlo",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png",
         "dueDate": "2024-02-20",
-        "progress": "50"
+        "progress": 50
       },
       {
         "courseId": 3,
@@ -113,7 +105,7 @@
         "instructor": "Sir Lang",
         "thumbnail": "https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png",
         "dueDate": "2024-02-10",
-        "progress": "20"
+        "progress": 20
       }
     ]
   }

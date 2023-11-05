@@ -14,17 +14,39 @@ const userSlice = createSlice({
       state.profile = { ...state.profile, ...action.payload };
     },
     signIn: (state, action) => {
-      state.isLoggedIn = true;
       state.token = action.payload;
+      state.isLoggedIn = true;
     },
     signOut: (state) => {
       state.profile = null;
       state.isLoggedIn = false;
       state.token = null;
     },
+    courseEnrollment: (state, action) => {
+      state.profile = {
+        ...state.profile,
+        coursesEnrolled: [...state.profile.coursesEnrolled, action.payload],
+      };
+    },
+    markAsCompleted: (state, action) => {
+      state.profile = {
+        ...state.profile,
+        coursesEnrolled: state.profile.coursesEnrolled.map((course) =>
+          course.courseId === action.payload
+            ? { ...course, progress: 100 }
+            : course
+        ),
+      };
+    },
   },
 });
 
-export const { signIn, signOut, userProfile } = userSlice.actions;
+export const {
+  signIn,
+  signOut,
+  userProfile,
+  courseEnrollment,
+  markAsCompleted,
+} = userSlice.actions;
 
 export default userSlice.reducer;
