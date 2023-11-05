@@ -1,0 +1,197 @@
+[
+  {
+    "id": 1,
+    "name": "Javascript",
+    "instructor": "John Doe",
+    "description": "Learn the basics of Javascript and build your first web app.",
+    "enrollmentStatus": "Open",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
+    "dueDate": "2024-01-20",
+    "duration": "4 weeks",
+    "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+    "location": "Online",
+    "prerequisites": [
+      "Basic JavaScript knowledge",
+      "Familiarity with HTML/CSS"
+    ],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to JavaScript",
+        "content": "Overview of Javascript, setting up your development environment."
+      },
+      {
+        "week": 2,
+        "topic": "Intermediate Javascript",
+        "content": "Deep Dive into Javascript, including ES6."
+      },
+      {
+        "week": 3,
+        "topic": "Advanced Javascript",
+        "content": "Learn about advanced Javascript concepts."
+      },
+      {
+        "week": 4,
+        "topic": "Assignments",
+        "content": "Complete assignments to test your knowledge."
+      }
+    ],
+    "students": [
+      { "id": 102, "name": "Shivam Sharma", "email": "shiv123@gmail.com" },
+      { "id": 103, "name": "Aftab Ahmed", "email": "aftab123@gmail.com" },
+      { "id": 101, "email": "test@test.com", "name": "Test Test" }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Python",
+    "instructor": "Monte Carlo",
+    "description": "Learn the basics of Python and build your first web app.",
+    "enrollmentStatus": "In-Progress",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/1869px-Python-logo-notext.svg.png",
+    "duration": "4 weeks",
+    "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+    "location": "Online",
+    "prerequisites": [
+      "Basic Python knowledge",
+      "Familiarity with Any other Programming Language."
+    ],
+    "dueDate": "2024-02-20",
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to Python",
+        "content": "Overview of Python, setting up your development environment."
+      },
+      {
+        "week": 2,
+        "topic": "Intermediate Python",
+        "content": "Deep Dive into Python, including v3."
+      },
+      {
+        "week": 3,
+        "topic": "Advanced Python",
+        "content": "Learn about advanced Python concepts."
+      },
+      {
+        "week": 4,
+        "topic": "Assignments",
+        "content": "Complete assignments to test your knowledge."
+      }
+    ],
+    "students": [
+      { "id": 101, "name": "Test Test", "email": "test@test.com" },
+      { "id": 102, "name": "Shivam Sharma", "email": "shiv123@gmail.com" },
+      { "id": 103, "name": "Aftab Ahmed", "email": "aftab123@gmail.com" }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "GoLang",
+    "instructor": "Sir Lang",
+    "description": "Learn the basics of GoLang and build your first web app.",
+    "enrollmentStatus": "Open",
+    "thumbnail": "https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_Blue.png",
+    "duration": "3 weeks",
+    "dueDate": "2024-02-10",
+    "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+    "location": "Online",
+    "prerequisites": ["Basic GoLang knowledge", "Familiarity with HTML/CSS"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to GoLang",
+        "content": "Overview of GoLang, setting up your development environment."
+      },
+      {
+        "week": 2,
+        "topic": "Intermediate GoLang",
+        "content": "Deep Dive into GoLang, including ES6."
+      },
+      {
+        "week": 3,
+        "topic": "Advanced GoLang",
+        "content": "Learn about advanced GoLang concepts."
+      }
+    ],
+    "students": [
+      { "id": 101, "name": "Test Test", "email": "test@test.com" },
+      { "id": 103, "name": "Aftab Ahmed", "email": "aftab123@gmail.com" }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "C++",
+    "instructor": "Sir Plus Plus",
+    "description": "Learn the basics of C++ and build your first web app.",
+    "enrollmentStatus": "Open",
+    "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1822px-ISO_C%2B%2B_Logo.svg.png",
+    "duration": "4 weeks",
+    "dueDate": "2024-03-30",
+    "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+    "location": "Online",
+    "prerequisites": ["Basic C++ knowledge", "Familiarity with HTML/CSS"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to C++",
+        "content": "Overview of C++, setting up your development environment."
+      },
+      {
+        "week": 2,
+        "topic": "Intermediate C++",
+        "content": "Deep Dive into C++, including ES6."
+      },
+      {
+        "week": 3,
+        "topic": "Advanced C++",
+        "content": "Learn about advanced C++ concepts."
+      },
+      {
+        "week": 4,
+        "topic": "Assignments",
+        "content": "Complete assignments to test your knowledge."
+      }
+    ],
+    "students": [
+      { "id": 102, "name": "Shivam Sharma", "email": "shiv123@gmail.com" },
+      { "id": 101, "name": "Test Test", "email": "test@test.com" }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Java",
+    "instructor": "Sir Coffee JAVA",
+    "description": "Learn the basics of Java and build your first web app.",
+    "enrollmentStatus": "Closed",
+    "thumbnail": "https://static.vecteezy.com/system/resources/previews/022/101/050/original/java-logo-transparent-free-png.png",
+    "dueDate": "2024-01-10",
+    "duration": "4 weeks",
+    "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+    "location": "Online",
+    "prerequisites": ["Basic Java knowledge", "Familiarity with HTML/CSS"],
+    "syllabus": [
+      {
+        "week": 1,
+        "topic": "Introduction to Java",
+        "content": "Overview of Java, setting up your development environment."
+      },
+      {
+        "week": 2,
+        "topic": "Intermediate Java",
+        "content": "Deep Dive into Java, including ES6."
+      },
+      {
+        "week": 3,
+        "topic": "Advanced Java",
+        "content": "Learn about advanced Java concepts."
+      },
+      {
+        "week": 4,
+        "topic": "Assignments",
+        "content": "Complete assignments to test your knowledge."
+      }
+    ],
+    "students": [{ "id": 101, "name": "Test Test", "email": "test@test.com" }]
+  }
+]
