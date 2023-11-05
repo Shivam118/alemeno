@@ -11,12 +11,13 @@ const CourseCard = ({ course }) => {
       style={{ color: "inherit", textDecoration: "none" }}
     >
       <Box
-        m={3}
         style={{
-          width: "280px",
-          height: "130px",
+          minWidth: "250px",
+          // height: "130px",
           display: "flex",
           flexDirection: "row",
+          gap: "20px",
+          flexWrap: "wrap",
           // border: "1px solid #ccc",
         }}
       >

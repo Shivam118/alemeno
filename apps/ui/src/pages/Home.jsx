@@ -90,6 +90,7 @@ export default function Home() {
         <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
           Courses we offer
         </Typography>
+        <br />
         <Box
           style={{
             border: "1px solid #ccc",

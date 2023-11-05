@@ -118,11 +118,12 @@ const CourseDesc = () => {
 
   return (
     <Box
-      p={"50px"}
       style={{
+        padding: "50px 10px 10px 10px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        flexWrap: "wrap",
       }}
     >
       <Modal
@@ -157,11 +158,11 @@ const CourseDesc = () => {
           <Box
             style={{
               display: "flex",
-              justifyContent: "space-evenly",
+              justifyContent: "space-between",
               alignItems: "center",
               flexDirection: "row",
               flexWrap: "wrap",
-              height: "300px",
+              gap: "20px",
               width: "80%",
               background: "rgba(250,250,250,1)",
             }}
@@ -173,7 +174,7 @@ const CourseDesc = () => {
                 style={{ width: "100%" }}
               />
             </Box>
-            <Box>
+            <Box p={"20px"}>
               <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
                 {course.name}
               </Typography>
@@ -196,7 +197,11 @@ const CourseDesc = () => {
                 label={course.enrollmentStatus}
               />
             </Box>
-            <Box>
+            <Box
+              style={{
+                paddingRight: "30px",
+              }}
+            >
               {isLoggedIn &&
               profile?.coursesEnrolled.some(
                 (course) => course.courseId === parseInt(id)
@@ -292,19 +297,13 @@ const CourseDesc = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               Syllabus:
             </Typography>
-            <List>
-              {course.syllabus.map((pre, index) => (
-                <ListItem key={index}>
-                  <Typography variant="body1">Week {pre.week}:</Typography>
-                  <Typography variant="body1">{pre.topic}</Typography>
-                  <List>
-                    <ListItem>
-                      <Typography variant="caption">{pre.content}</Typography>
-                    </ListItem>
-                  </List>
-                </ListItem>
-              ))}
-            </List>
+            {course.syllabus.map((pre, index) => (
+              <Box style={{ marginTop: "10px" }}>
+                <Typography variant="body1">Week {pre.week}:</Typography>
+                <Typography variant="body1">{pre.topic}</Typography>
+                <Typography variant="caption">{pre.content}</Typography>
+              </Box>
+            ))}
           </Box>
         </>
       )}
