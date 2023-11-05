@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { SECRET } = process.env;
 const { isLoggedIn } = require("./middleware");
@@ -7,46 +6,48 @@ const userList = require("../db/users.json");
 const fs = require("fs");
 const path = require("path");
 
-// router.post("/signup", async (req, res) => {
-//   const { User } = req.context.models;
-//   const { name, email, password} = req.body;
-//   if (!name || !email || !password) {
-//     res.status(400).json({ message: "Please enter all fields" });
-//   }
+{
+  /* router.post("/signup", async (req, res) => {
+  const { User } = req.context.models;
+  const { name, email, password} = req.body;
+  if (!name || !email || !password) {
+    res.status(400).json({ message: "Please enter all fields" });
+  }
 
-//   try {
-//     const userExist = await User.findOne({ email: email });
-//     if (userExist) {
-//       return res
-//         .status(422)
-//         .json({ message: "User with this email Already Exists" });
-//     }
-//     const hashPassword = await bcrypt.hash(password, 10);
-//     const user = await User.create({
-//       name,
-//       email,
-//       password: hashPassword,
-//       type,
-//     });
-//     res.status(201).json({ message: "User Details Saved Successfully" });
-//   } catch (error) {
-//     res.status(400).json({ error });
-//   }
-// });
+  try {
+    const userExist = await User.findOne({ email: email });
+    if (userExist) {
+      return res
+        .status(422)
+        .json({ message: "User with this email Already Exists" });
+    }
+    const hashPassword = await bcrypt.hash(password, 10);
+    const user = await User.create({
+      name,
+      email,
+      password: hashPassword,
+      type,
+    });
+    res.status(201).json({ message: "User Details Saved Successfully" });
+  } catch (error) {
+    res.status(400).json({ error });
+  }
+}); */
+}
 
+// This Route is used to get all the verify and Signing In the user.
 router.post("/login", async (req, res) => {
-  // const { User } = req.context.models;
-  const { email, password } = req.body;
+  const { email, password } = req.body; // Body Params passed in the Request Body
   if (!email || !password) {
     res.status(400).json({ error: "Please enter all fields" });
   }
   try {
-    // const user = await User.findOne({ username, type });
+    // Finding the user with the given email
     const user = userList.find((user) => user.email === email);
     if (user) {
-      // const result = await bcrypt.compare(password, user.password);
       const result = user.password === password;
       if (result) {
+        // Creating a JWT Token with the user details and sending it as response
         const token = await jwt.sign(
           {
             email: user.email,
@@ -67,6 +68,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// This Route is used to get the details of a particular user.
 router.get("/me", isLoggedIn, async (req, res) => {
   try {
     const { email } = req.user;
@@ -77,25 +79,25 @@ router.get("/me", isLoggedIn, async (req, res) => {
   }
 });
 
+// This Route is used to mark a course Completed under a particular user.
 router.post("/course-complete", isLoggedIn, async (req, res) => {
   try {
-    const { courseId, userEmail } = req.body;
+    const { courseId, userEmail } = req.body; // Params passed in the Body of the URL
     if (!courseId || !userEmail) {
       return res.status(400).json({ error: "Please enter all fields" });
     }
+    // Finding the user with the given email
     const user = userList.find((user) => user.email === userEmail);
-    // const course = courseList.find(
-    //   (course) => course.id === parseInt(courseId)
-    // );
 
+    // Checking if the user has already completed the course
     const alreadyCompletedCheck = user.coursesEnrolled.find(
       (course) => course.courseId === parseInt(courseId)
     );
-
     if (alreadyCompletedCheck.progress === 100) {
       return res.status(400).json({ error: "Already completed" });
     }
 
+    // Updating the progress of the course using readFile and writeFile
     fs.readFile(
       path.join(__dirname, "..", "/db/users.json"),
       "utf8",

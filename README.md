@@ -41,6 +41,19 @@ You can also check the server using [http://localhost:5000/test](http://localhos
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+## Test Credentials
+
+You can use the following credentials to login:
+
+_Note: Email and Password are case sensitive._
+
+```
+Email: test@test.com
+Password: 1234
+```
+
+Please note that the password is not encrypted and is stored in plain text for testing purpose only.
+
 ## Project Structure
 
 ```bash

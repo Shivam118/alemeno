@@ -1,18 +1,5 @@
 const jwt = require("jsonwebtoken");
 const { SECRET } = process.env;
-// const User = require("../models/User");
-// const Session = require("../models/Session");
-
-// const createContext = (req, res, next) => {
-//   // put any data you want in the object below to be accessible to all routes
-//   req.context = {
-//     models: {
-//       User,
-//       Session,
-//     },
-//   };
-//   next();
-// };
 
 // MIDDLEWARE FOR AUTHORIZATION (MAKING SURE THEY ARE LOGGED IN)
 const isLoggedIn = async (req, res, next) => {
@@ -40,5 +27,4 @@ const isLoggedIn = async (req, res, next) => {
 
 module.exports = {
   isLoggedIn,
-  // createContext,
 };
