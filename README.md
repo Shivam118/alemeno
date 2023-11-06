@@ -4,24 +4,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you have to first change the directory to the <b>UI folder</b> and then install the necessary packages using the following command:
+In the project directory, you have to run npm install 3 times for different directories:
 
-You have to run npm install 3 times for different directories:
-
-Complete Project - [_within root directory_]
+Complete Project - [_within root directory_] - to Install Turbo CLI
 
 ```
 npm install
 ```
 
-Frontend
+Frontend - [_ui directory_] - to Install ReactJS
 
 ```
 cd .\apps\ui
 npm install
 ```
 
-Backend
+Backend - [_server directory_] - to Install ExpressJS
 
 ```
 cd .\apps\server
@@ -61,6 +59,8 @@ Please note that the password is not encrypted and is stored in plain text for t
 │   ├───server
 │   │   ├───controllers
 │   │   ├───db
+│   │   │   ├────users.json
+│   │   │   └────courses.json
 │   │   ├───routes
 │   │   └───config
 │   └───ui
