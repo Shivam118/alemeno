@@ -29,7 +29,7 @@
         "instructor": "Sir Coffee JAVA",
         "thumbnail": "https://static.vecteezy.com/system/resources/previews/022/101/050/original/java-logo-transparent-free-png.png",
         "dueDate": "2024-01-10",
-        "progress": 10
+        "progress": 100
       },
       {
         "courseId": 1,
@@ -37,6 +37,14 @@
         "instructor": "John Doe",
         "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png",
         "dueDate": "2024-01-20",
+        "progress": 0
+      },
+      {
+        "courseId": 11,
+        "courseName": "Kotlin",
+        "instructor": "Sir Coffee Kotlin",
+        "thumbnail": "https://developer.okta.com/assets-jekyll/blog/tutorial-kotlin-beginners-guide/kotlin-logo-social-21c8518b19eb96d96f35e0057bb92b7e1281a24820e0fa09e39c42f184bd7faa.png",
+        "dueDate": "2024-01-10",
         "progress": 0
       }
     ]

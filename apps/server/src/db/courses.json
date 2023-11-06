@@ -402,7 +402,7 @@
         "content": "Complete assignments to test your knowledge."
       }
     ],
-    "students": []
+    "students": [{ "id": 101, "email": "test@test.com", "name": "Test Test" }]
   },
   {
     "id": 12,
