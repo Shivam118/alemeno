@@ -39,6 +39,22 @@ You can also check the server using [http://localhost:5000/test](http://localhos
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+## Project Description
+
+This project is a simple CRUD application with a login system.\
+The project is divided into two parts:\
+Server - Backend \
+UI - Frontend \
+JSON File - Database (Local)
+
+The server is built using ExpressJS and the UI is built using ReactJS and Redux.\
+The server is connected to a local JSON File as a Database.\
+The UI is connected to the server using Axios. \
+The state in UI is managed by Redux. \
+The UI is built using Material UI.
+
+https://github.com/Shivam118/alemeno/assets/56683300/03e42638-0ea5-49cf-9746-f2427b6af16f
+
 ## Test Credentials
 
 You can use the following credentials to login:
@@ -72,20 +88,6 @@ Please note that the password is not encrypted and is stored in plain text for t
 │           └───styles
 └───node_modules
 ```
-
-## Project Description
-
-This project is a simple CRUD application with a login system.\
-The project is divided into two parts:\
-Server - Backend \
-UI - Frontend \
-JSON File - Database (Local)
-
-The server is built using ExpressJS and the UI is built using ReactJS and Redux.\
-The server is connected to a local JSON File as a Database.\
-The UI is connected to the server using Axios. \
-The state in UI is managed by Redux. \
-The UI is built using Material UI.
 
 ## Learn More
 
